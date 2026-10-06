@@ -1,0 +1,6 @@
+{
+  "name": "CHEMI — Jewelry Made to Keep a Story",
+  "description": "Give a Story. Wear the Memory. Explore CHEMI Beads for custom personalized gifts and CHEMI Silver for flower keepsake jewelry.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
