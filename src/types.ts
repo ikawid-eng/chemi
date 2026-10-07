@@ -1,10 +1,12 @@
 export type NavigationTab = 
   | 'home'
+  | 'collections'
+  | 'workshops'
+  | 'our-story'
   | 'beads-customizer'
   | 'silver-customizer'
   | 'flower-guide'
   | 'gift-guide'
-  | 'our-story'
   | 'stories-gallery';
 
 export type BeadJewelryType = 'bracelet' | 'necklace' | 'brooch';

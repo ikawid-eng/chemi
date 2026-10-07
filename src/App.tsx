@@ -13,12 +13,20 @@ import { CheckoutModal } from './components/CheckoutModal';
 // Homepage Sections
 import { HeroSection } from './components/HeroSection';
 import { ChooseYourStorySection } from './components/ChooseYourStorySection';
-import { YourFlowerOrOursSection } from './components/YourFlowerOrOursSection';
+import { WhatIsChemiSection } from './components/WhatIsChemiSection';
+import { ManifestoBannerSection } from './components/ManifestoBannerSection';
+import { ValuePropsRow } from './components/ValuePropsRow';
 import { GiftExperienceSection } from './components/GiftExperienceSection';
-import { MomentsToGiveSection } from './components/MomentsToGiveSection';
-import { StoryBehindSection } from './components/StoryBehindSection';
+import { YourFlowerOrOursSection } from './components/YourFlowerOrOursSection';
+import { CatalogSection } from './components/CatalogSection';
+import { WorkshopsSection } from './components/WorkshopsSection';
+import { ReviewsSection } from './components/ReviewsSection';
+import { GiftSection } from './components/GiftSection';
+import { ContactSection } from './components/ContactSection';
 
 // Page Views
+import { CollectionsPage } from './components/CollectionsPage';
+import { WorkshopsPage } from './components/WorkshopsPage';
 import { BeadsCustomizer } from './components/BeadsCustomizer';
 import { SilverCustomizer } from './components/SilverCustomizer';
 import { FlowerSubmissionGuide } from './components/FlowerSubmissionGuide';
@@ -93,54 +101,57 @@ export default function App() {
         {/* TAB 1: HOME PAGE */}
         {activeTab === 'home' && (
           <div className="animate-in fade-in duration-300">
-            {/* 01. HERO & 02. ABOUT CHEMI */}
+            {/* 01. HERO (Dark Velvet Hero with Outline Button) */}
             <HeroSection setActiveTab={setActiveTab} />
 
-            {/* 03. CHOOSE YOUR STORY (CHEMI Beads vs CHEMI Silver) */}
+            {/* 02. FEATURED COLLECTION (Horizontal 4-Card Carousel on Warm Cream Canvas) */}
             <ChooseYourStorySection setActiveTab={setActiveTab} />
 
-            {/* 06. YOUR FLOWER OR OURS? */}
+            {/* 03. OUR STORY (Split 2-Column Packaging & Story Banner) */}
+            <WhatIsChemiSection setActiveTab={setActiveTab} />
+
+            {/* 04. MANIFESTO BANNER (Full-Bleed Dark Statement Banner) */}
+            <ManifestoBannerSection setActiveTab={setActiveTab} />
+
+            {/* 05. VALUE PROPOSITION ROW (Minimal White Value Bar) */}
+            <ValuePropsRow />
+
+            {/* 06. CUSTOMIZATION (Interactive Customizers Intro) */}
+            <GiftExperienceSection />
             <YourFlowerOrOursSection setActiveTab={setActiveTab} />
 
-            {/* 07. THE CHEMI GIFT EXPERIENCE */}
-            <GiftExperienceSection />
+            {/* 07. CATALOG */}
+            <CatalogSection setActiveTab={setActiveTab} />
 
-            {/* 08. MOMENTS TO GIVE (Occasion Guide) */}
-            <MomentsToGiveSection setActiveTab={setActiveTab} />
+            {/* 08. CHEMI WORKSHOPS */}
+            <WorkshopsSection setActiveTab={setActiveTab} />
 
-            {/* 09. STORY BEHIND YOUR CHEMI */}
-            <StoryBehindSection setActiveTab={setActiveTab} />
+            {/* 09. REVIEWS */}
+            <ReviewsSection />
 
-            {/* 10. FINAL HOMEPAGE CTA */}
-            <section className="py-20 bg-[#3B1017] text-[#FAF7F2] text-center relative overflow-hidden border-t border-[#581C25]">
-              <div className="max-w-4xl mx-auto px-4 space-y-6 relative z-10">
-                <span className="text-xs font-semibold uppercase tracking-widest text-[#C5A059] bg-[#581C25] px-3.5 py-1 rounded-full border border-stone-800">
-                  Jewelry Made to Keep a Story
-                </span>
-                <h2 className="font-serif-editorial text-4xl sm:text-6xl font-bold leading-tight">
-                  Give a Story. Wear the Memory.
-                </h2>
-                <p className="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto">
-                  Turn a meaningful moment, relationship, or preserved flower into something you can wear, give, and keep forever.
-                </p>
-                <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4">
-                  <button
-                    onClick={() => setActiveTab('beads-customizer')}
-                    className="bg-[#581C25] hover:bg-[#7A2834] text-[#FAF7F2] px-8 py-4 rounded-full font-medium text-xs uppercase tracking-widest shadow-xl flex items-center justify-center gap-2 cursor-pointer border border-[#7A2834]"
-                  >
-                    <span>Create Custom Beads Gift</span>
-                    <ArrowRight className="w-4 h-4 text-[#C5A059]" />
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('silver-customizer')}
-                    className="bg-stone-900 hover:bg-black text-[#FAF7F2] px-8 py-4 rounded-full font-medium text-xs uppercase tracking-widest shadow-xl flex items-center justify-center gap-2 cursor-pointer border border-stone-800"
-                  >
-                    <Flower2 className="w-4 h-4 text-[#C5A059]" />
-                    <span>Preserve Flower Memory</span>
-                  </button>
-                </div>
-              </div>
-            </section>
+            {/* 10. GIFT EXPERIENCE */}
+            <GiftSection />
+
+            {/* 11. CONTACT */}
+            <ContactSection />
+          </div>
+        )}
+
+        {/* TAB: COLLECTIONS (10 DISTINCT JEWELRY TYPES) */}
+        {activeTab === 'collections' && (
+          <div className="animate-in fade-in duration-300">
+            <CollectionsPage
+              setActiveTab={setActiveTab}
+              onAddToCart={handleAddToCart}
+              onOpenCart={() => setCartOpen(true)}
+            />
+          </div>
+        )}
+
+        {/* TAB: WORKSHOPS (STUDIO SCHEDULE & REGISTRATION) */}
+        {activeTab === 'workshops' && (
+          <div className="animate-in fade-in duration-300">
+            <WorkshopsPage setActiveTab={setActiveTab} />
           </div>
         )}
 

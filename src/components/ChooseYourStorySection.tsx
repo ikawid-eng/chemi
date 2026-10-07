@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight, Sparkles, Flower2, Heart } from 'lucide-react';
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { NavigationTab } from '../types';
 
 interface ChooseYourStorySectionProps {
@@ -7,147 +7,116 @@ interface ChooseYourStorySectionProps {
 }
 
 export const ChooseYourStorySection: React.FC<ChooseYourStorySectionProps> = ({ setActiveTab }) => {
+  const [scrollIdx, setScrollIdx] = useState(0);
+
+  const collectionItems = [
+    {
+      id: 'item-1',
+      name: 'THE BLUSH PEARL BRACELET',
+      price: 'IDR 189,000',
+      category: 'CHEMI BEADS',
+      image: 'https://images.unsplash.com/photo-1611591475193-47a61d120d36?q=80&w=600&auto=format&fit=crop',
+      tab: 'beads-customizer' as NavigationTab,
+    },
+    {
+      id: 'item-2',
+      name: 'THE BOTANICAL MEMORY PENDANT',
+      price: 'IDR 429,000',
+      category: 'CHEMI SILVER',
+      image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=600&auto=format&fit=crop',
+      tab: 'silver-customizer' as NavigationTab,
+    },
+    {
+      id: 'item-3',
+      name: 'THE ETERNITY ROSE RING',
+      price: 'IDR 389,000',
+      category: 'CHEMI SILVER',
+      image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=600&auto=format&fit=crop',
+      tab: 'silver-customizer' as NavigationTab,
+    },
+    {
+      id: 'item-4',
+      name: 'THE SIGNATURE STORY BOX',
+      price: 'IDR 529,000',
+      category: 'GIFT EXPERIENCE',
+      image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=600&auto=format&fit=crop',
+      tab: 'gift-guide' as NavigationTab,
+    },
+  ];
+
   return (
-    <section className="py-20 bg-[#FAF7F2] border-t border-[#EFE8DC]">
+    <section className="py-20 lg:py-28 bg-[#FAF7F2] text-stone-900 border-b border-[#EFE8DC] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center space-y-3 mb-16 max-w-2xl mx-auto">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#581C25] bg-[#F3ECE1] px-3.5 py-1 rounded-full border border-[#EFE8DC]">
-            Two Product Experiences
-          </span>
-          <h2 className="font-serif-editorial text-4xl sm:text-5xl font-bold text-[#3B1017]">
-            How do you want to keep the story?
+        {/* Section Header (Exact style from image.png) */}
+        <div className="text-center space-y-3 mb-16">
+          <div className="flex items-center justify-center gap-3">
+            <span className="w-8 h-[1px] bg-[#581C25]" />
+            <span className="text-[11px] font-sans-body font-semibold tracking-[0.25em] uppercase text-[#581C25]">
+              FEATURED COLLECTION
+            </span>
+            <span className="w-8 h-[1px] bg-[#581C25]" />
+          </div>
+
+          <h2 className="font-serif-editorial text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#3B1017] uppercase">
+            THE CHEMI COLLECTION
           </h2>
-          <p className="text-xs sm:text-sm text-stone-600 font-sans-body">
-            Choose between creating a personalized custom gift with CHEMI Beads, or preserving a meaningful flower keepsake in CHEMI Silver.
+
+          <p className="text-xs sm:text-sm font-sans-body text-stone-600 tracking-wider">
+            Designed for moments that matter.
           </p>
         </div>
 
-        {/* Two Major Product Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+        {/* Carousel Grid with Arrow Controls (Exact layout from image.png) */}
+        <div className="relative">
           
-          {/* 11.1 CHEMI BEADS Card */}
-          <div className="bg-[#FAF7F2] border-2 border-[#EFE8DC] rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all relative overflow-hidden group">
-            
-            {/* Soft decorative background accent */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#F3ECE1] rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
+          {/* Left Arrow */}
+          <button
+            onClick={() => setScrollIdx(Math.max(0, scrollIdx - 1))}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-6 z-20 w-10 h-10 rounded-full bg-white/90 border border-[#EFE8DC] text-stone-700 hover:text-[#581C25] flex items-center justify-center shadow-md transition-all cursor-pointer"
+            aria-label="Previous"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
 
-            <div className="relative z-10 space-y-6">
-              <div className="flex items-center justify-between">
-                <span className="text-xs uppercase tracking-widest font-bold text-[#581C25] bg-[#F3ECE1] px-3 py-1 rounded-full border border-[#EFE8DC]">
-                  Create a Gift
-                </span>
-                <span className="font-serif-editorial text-lg text-[#581C25] font-semibold">
-                  From Rp 189.000
-                </span>
-              </div>
+          {/* Right Arrow */}
+          <button
+            onClick={() => setScrollIdx(Math.min(collectionItems.length - 1, scrollIdx + 1))}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-6 z-20 w-10 h-10 rounded-full bg-white/90 border border-[#EFE8DC] text-stone-700 hover:text-[#581C25] flex items-center justify-center shadow-md transition-all cursor-pointer"
+            aria-label="Next"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
 
-              <div>
-                <h3 className="font-serif-editorial text-4xl sm:text-5xl font-bold text-[#3B1017] tracking-tight">
-                  CHEMI BEADS
-                </h3>
-                <p className="text-sm font-semibold text-[#581C25] mt-1 italic">
-                  "Make something that feels like them."
-                </p>
-              </div>
+          {/* 4 Square Cards Row (Exact as image.png) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {collectionItems.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => setActiveTab(item.tab)}
+                className="group cursor-pointer flex flex-col justify-between space-y-4"
+              >
+                <div className="aspect-square rounded-xl overflow-hidden bg-[#EFE8DC]/50 border border-[#EFE8DC] p-4 flex items-center justify-center shadow-2xs group-hover:shadow-lg transition-all duration-300">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
 
-              <p className="text-stone-700 text-sm leading-relaxed font-sans-body">
-                Pilih warna, beads, dan detail yang terasa seperti mereka. Ubah warna favorit, suasana hati, atau pesan rahasia menjadi perhiasan buatan tangan yang unik.
-              </p>
-
-              <div className="space-y-2 pt-2 border-t border-[#EFE8DC]">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500">Suitable For:</span>
-                <div className="flex flex-wrap gap-2 text-xs text-stone-700">
-                  {['Birthday', 'Friendship', 'Appreciation', 'Everyday Gifts', 'Little Milestones'].map((tag) => (
-                    <span key={tag} className="bg-white border border-[#EFE8DC] px-2.5 py-1 rounded-md text-[11px] font-medium">
-                      • {tag}
-                    </span>
-                  ))}
+                <div className="space-y-1 text-center font-sans-body">
+                  <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-[#581C25] block">
+                    {item.category}
+                  </span>
+                  <h3 className="text-xs font-bold tracking-[0.15em] text-stone-900 uppercase">
+                    {item.name}
+                  </h3>
+                  <span className="text-xs text-stone-600 block font-serif-editorial font-semibold">
+                    {item.price}
+                  </span>
                 </div>
               </div>
-
-              {/* Product Visual */}
-              <div className="rounded-2xl overflow-hidden border border-[#EFE8DC] shadow-sm my-4">
-                <img
-                  src="https://images.unsplash.com/photo-1611591475193-47a61d120d36?q=80&w=800&auto=format&fit=crop"
-                  alt="CHEMI Beads bracelet"
-                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            </div>
-
-            <div className="relative z-10 pt-6">
-              <button
-                onClick={() => setActiveTab('beads-customizer')}
-                className="w-full py-4 bg-[#581C25] hover:bg-[#3B1017] text-[#FAF7F2] rounded-2xl font-medium text-xs tracking-widest uppercase flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
-              >
-                <span>Create Your Beads →</span>
-              </button>
-            </div>
-
-          </div>
-
-          {/* 11.2 CHEMI SILVER Card */}
-          <div className="bg-[#0F0E0E] text-[#FAF7F2] border-2 border-stone-800 rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-2xl hover:border-[#581C25] transition-all relative overflow-hidden group">
-            
-            {/* Deep maroon background gradient accent */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#3B1017] rounded-full blur-3xl opacity-60 -mr-16 -mt-16 pointer-events-none" />
-
-            <div className="relative z-10 space-y-6">
-              <div className="flex items-center justify-between">
-                <span className="text-xs uppercase tracking-widest font-bold text-[#C5A059] bg-[#3B1017] px-3 py-1 rounded-full border border-stone-800">
-                  Preserve a Memory
-                </span>
-                <span className="font-serif-editorial text-lg text-[#C5A059] font-semibold">
-                  From Rp 349.000
-                </span>
-              </div>
-
-              <div>
-                <h3 className="font-serif-editorial text-4xl sm:text-5xl font-bold text-white tracking-tight">
-                  CHEMI SILVER
-                </h3>
-                <p className="text-sm font-semibold text-[#C5A059] mt-1 italic">
-                  "Some flowers deserve more than a vase."
-                </p>
-              </div>
-
-              <p className="text-stone-300 text-sm leading-relaxed font-sans-body">
-                Bawa bunga dari momen yang berarti dan ubah menjadi keepsake jewelry 925 Sterling Silver. Simpan kelopak bunga pernikahan, kelopak wisuda, atau bunga pemberian kenangan selamanya.
-              </p>
-
-              <div className="space-y-2 pt-2 border-t border-stone-800">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-stone-400">Suitable For:</span>
-                <div className="flex flex-wrap gap-2 text-xs text-stone-300">
-                  {['Wedding Bouquet', 'Graduation Flowers', 'Anniversary', 'Special Celebrations', 'Meaningful Memories'].map((tag) => (
-                    <span key={tag} className="bg-stone-900 border border-stone-800 px-2.5 py-1 rounded-md text-[11px] font-medium text-stone-300">
-                      • {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Product Visual */}
-              <div className="rounded-2xl overflow-hidden border border-stone-800 shadow-sm my-4">
-                <img
-                  src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=800&auto=format&fit=crop"
-                  alt="CHEMI Silver flower pendant"
-                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            </div>
-
-            <div className="relative z-10 pt-6">
-              <button
-                onClick={() => setActiveTab('silver-customizer')}
-                className="w-full py-4 bg-[#581C25] hover:bg-[#7A2834] text-[#FAF7F2] rounded-2xl font-medium text-xs tracking-widest uppercase flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer border border-[#7A2834]"
-              >
-                <Flower2 className="w-4 h-4 text-[#C5A059]" />
-                <span>Preserve Your Flower →</span>
-              </button>
-            </div>
-
+            ))}
           </div>
 
         </div>

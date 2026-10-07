@@ -113,39 +113,46 @@ export const SILVER_CHARMS: SilverCharmOption[] = [
 
 export const CHEMI_FLOWERS: ChemiFlowerOption[] = [
   {
-    id: 'white-rose',
-    name: 'Pure White Rose',
-    symbolism: 'New beginnings, pure reverence, and timeless affection',
-    color: 'Ivory White',
+    id: 'rose',
+    name: 'Pure White & Crimson Rose',
+    symbolism: 'Timeless affection, reverence, and enduring devotion',
+    color: 'Crimson & Ivory',
     image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop',
+  },
+  {
+    id: 'daisy',
+    name: 'Sunlit Wild Daisy',
+    symbolism: 'Innocence, fresh hope, and joyful new beginnings',
+    color: 'Buttercup Yellow & White',
+    image: 'https://images.unsplash.com/photo-1606041008023-472dfb5e530f?q=80&w=600&auto=format&fit=crop',
+  },
+  {
+    id: 'lily',
+    name: 'Stargazer White Lily',
+    symbolism: 'Purity of commitment, honor, and noble warmth',
+    color: 'Pure Silk White',
+    image: 'https://images.unsplash.com/photo-1508610048659-a06b669e3321?q=80&w=600&auto=format&fit=crop',
+  },
+  {
+    id: 'carnation',
+    name: 'Blush Pink Carnation',
+    symbolism: 'Unconditional love, gratitude, and maternal warmth',
+    color: 'Blush Petal Pink',
+    image: 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=600&auto=format&fit=crop',
+  },
+  {
+    id: 'chrysanthemum',
+    name: 'Golden Chrysanthemum',
+    symbolism: 'Longevity, optimism, joy, and deep friendship',
+    color: 'Warm Amber Gold',
+    image: 'https://images.unsplash.com/photo-1533616688419-b7a585564566?q=80&w=600&auto=format&fit=crop',
   },
   {
     id: 'babys-breath',
     name: 'Gypsophila (Baby’s Breath)',
     symbolism: 'Everlasting gratitude, sincerity, and gentle support',
     color: 'Soft Cloud White',
-    image: 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=600&auto=format&fit=crop',
-  },
-  {
-    id: 'lavender',
-    name: 'French Lavender Stem',
-    symbolism: 'Tranquility, devotion, and cherished friendship',
-    color: 'Deep Violet',
     image: 'https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?q=80&w=600&auto=format&fit=crop',
-  },
-  {
-    id: 'hydrangea',
-    name: 'Soft Blue Hydrangea',
-    symbolism: 'Deep heartfelt emotions and genuine understanding',
-    color: 'Sky Blue',
-    image: 'https://images.unsplash.com/photo-1508610048659-a06b669e3321?q=80&w=600&auto=format&fit=crop',
-  },
-  {
-    id: 'marigold',
-    name: 'Golden Marigold Petals',
-    symbolism: 'Warmth, celebration, triumph, and personal achievement',
-    color: 'Warm Amber Gold',
-    image: 'https://images.unsplash.com/photo-1533616688419-b7a585564566?q=80&w=600&auto=format&fit=crop',
   },
 ];
 
