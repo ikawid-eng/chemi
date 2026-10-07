@@ -37,6 +37,22 @@ export interface BeadCustomizationState {
   personalNote?: string;
 }
 
+export interface SilverPendantShape {
+  id: 'oval' | 'heart' | 'round' | 'teardrop';
+  name: string;
+  description: string;
+  priceModifier: number;
+  image: string;
+}
+
+export interface StrandBeadItem {
+  id: string;
+  type: 'bead' | 'flower' | 'pearl';
+  colorName: string;
+  hex: string;
+  size: number; // e.g. 8, 10, 12, 16
+}
+
 export type SilverJewelryModel = {
   id: 'silver-bracelet' | 'silver-necklace' | 'silver-brooch';
   name: string;

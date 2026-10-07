@@ -101,33 +101,33 @@ export default function App() {
         {/* TAB 1: HOME PAGE */}
         {activeTab === 'home' && (
           <div className="animate-in fade-in duration-300">
-            {/* 01. HERO (Dark Velvet Hero with Outline Button) */}
+            {/* 01. HERO */}
             <HeroSection setActiveTab={setActiveTab} />
 
-            {/* 02. FEATURED COLLECTION (Horizontal 4-Card Carousel on Warm Cream Canvas) */}
-            <ChooseYourStorySection setActiveTab={setActiveTab} />
-
-            {/* 03. OUR STORY (Split 2-Column Packaging & Story Banner) */}
+            {/* 02. ABOUT CHEMI (WHAT IS CHEMI & BRAND STORY) */}
             <WhatIsChemiSection setActiveTab={setActiveTab} />
 
-            {/* 04. MANIFESTO BANNER (Full-Bleed Dark Statement Banner) */}
+            {/* 03. MANIFESTO STATEMENT BANNER */}
             <ManifestoBannerSection setActiveTab={setActiveTab} />
 
-            {/* 05. VALUE PROPOSITION ROW (Minimal White Value Bar) */}
+            {/* 04. REVIEWS (STORIES THEY KEEP) */}
+            <ReviewsSection />
+
+            {/* 05. VALUE PROPOSITION ROW */}
             <ValuePropsRow />
 
-            {/* 06. CUSTOMIZATION (Interactive Customizers Intro) */}
+            {/* 06. CHOOSE YOUR STORY (SHOP / FEATURED COLLECTION) */}
+            <ChooseYourStorySection setActiveTab={setActiveTab} />
+
+            {/* 07. CUSTOMIZATION (Interactive Customizers Intro) */}
             <GiftExperienceSection />
             <YourFlowerOrOursSection setActiveTab={setActiveTab} />
 
-            {/* 07. CATALOG */}
+            {/* 08. CATALOG */}
             <CatalogSection setActiveTab={setActiveTab} />
 
-            {/* 08. CHEMI WORKSHOPS */}
+            {/* 09. CHEMI WORKSHOPS */}
             <WorkshopsSection setActiveTab={setActiveTab} />
-
-            {/* 09. REVIEWS */}
-            <ReviewsSection />
 
             {/* 10. GIFT EXPERIENCE */}
             <GiftSection />

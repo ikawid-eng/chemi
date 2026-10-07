@@ -23,7 +23,7 @@ export const WorkshopsSection: React.FC<WorkshopsSectionProps> = ({ setActiveTab
     time: '13:00 - 16:00 WIB',
     location: 'CHEMI Studio, Senopati, South Jakarta',
     price: 'IDR 350,000 / person',
-    image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=1200&auto=format&fit=crop',
+    image: '/src/assets/images/chemi_workshop_studio_1791363890862.jpg',
     desc: 'Hands-on weekend session learning color harmony, freshwater pearl selection, and crafting custom bead flower jewelry.',
   };
 
@@ -34,7 +34,7 @@ export const WorkshopsSection: React.FC<WorkshopsSectionProps> = ({ setActiveTab
       type: 'Private Events',
       date: 'By Appointment',
       location: 'CHEMI Studio',
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_beads_showcase_1791363842551.jpg',
     },
     {
       id: 'act-2',
@@ -42,7 +42,7 @@ export const WorkshopsSection: React.FC<WorkshopsSectionProps> = ({ setActiveTab
       type: 'Campus Activities',
       date: 'Monthly Pop-up',
       location: 'Jakarta Campus Hubs',
-      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_silver_keepsake_1791363874692.jpg',
     },
     {
       id: 'act-3',
@@ -50,7 +50,7 @@ export const WorkshopsSection: React.FC<WorkshopsSectionProps> = ({ setActiveTab
       type: 'Community Events',
       date: 'Last Sunday of the Month',
       location: 'CHEMI Garden Terrace',
-      image: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=600&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_gift_packaging_1791363914513.jpg',
     },
   ];
 
@@ -77,6 +77,7 @@ export const WorkshopsSection: React.FC<WorkshopsSectionProps> = ({ setActiveTab
             <img
               src={featuredWorkshop.image}
               alt={featuredWorkshop.title}
+              referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
             />
           </div>
@@ -147,7 +148,7 @@ export const WorkshopsSection: React.FC<WorkshopsSectionProps> = ({ setActiveTab
             {activities.map((item) => (
               <div key={item.id} className="bg-white rounded-2xl p-6 border border-[#EFE8DC] space-y-4">
                 <div className="h-44 rounded-xl overflow-hidden bg-stone-100">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                  <img src={item.image} alt={item.title} referrerPolicy="no-referrer" className="w-full h-full object-cover" />
                 </div>
                 <span className="text-[10px] font-bold text-[#581C25] uppercase tracking-widest block font-sans-body">
                   {item.type}

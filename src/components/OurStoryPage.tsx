@@ -52,8 +52,9 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ setActiveTab }) => {
 
           <div className="lg:col-span-6 rounded-3xl overflow-hidden border border-[#EFE8DC] shadow-xl bg-stone-100">
             <img
-              src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1000&auto=format&fit=crop"
+              src="/src/assets/images/chemi_silver_keepsake_1791363874692.jpg"
               alt="CHEMI History Craftsmanship"
+              referrerPolicy="no-referrer"
               className="w-full h-[450px] object-cover"
             />
           </div>

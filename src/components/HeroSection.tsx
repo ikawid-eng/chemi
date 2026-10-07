@@ -13,9 +13,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ setActiveTab }) => {
       {/* Background High-Fashion Photography (Exact style from image.png hero) */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1800&auto=format&fit=crop"
+          src="/src/assets/images/hero_chemi_jewelry_1791363797623.jpg"
           alt="CHEMI Fine Jewelry"
-          className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity scale-102"
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover object-center opacity-50 scale-102"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#1C070C] via-[#1C070C]/80 to-transparent" />
       </div>

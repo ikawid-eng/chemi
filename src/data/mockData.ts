@@ -2,6 +2,7 @@ import {
   BeadColorOption, 
   BeadStyleOption, 
   SilverJewelryModel, 
+  SilverPendantShape,
   SilverCharmOption, 
   ChemiFlowerOption, 
   GiftOccasion, 
@@ -46,30 +47,80 @@ export const BEAD_STYLES: BeadStyleOption[] = [
   },
 ];
 
+export const RESIN_PENDANT_SHAPES: SilverPendantShape[] = [
+  {
+    id: 'oval',
+    name: '1. Oval Botanical Locket',
+    description: 'Classic vintage oval silver bezel with filigree border. Perfect for vertical rose or lily petals.',
+    priceModifier: 0,
+    image: '/src/assets/images/silver_pendant_oval_1791364570015.jpg',
+  },
+  {
+    id: 'heart',
+    name: '2. Embraced Heart Keepsake',
+    description: 'Romantic heart-shaped 925 sterling silver frame encapsulating cherished flower blossoms.',
+    priceModifier: 20000,
+    image: '/src/assets/images/silver_pendant_heart_1791364582838.jpg',
+  },
+  {
+    id: 'round',
+    name: '3. Classic Round Solitaire Bezel',
+    description: 'Sleek, modern circular 925 sterling silver frame holding high-clarity crystal resin.',
+    priceModifier: 10000,
+    image: '/src/assets/images/silver_pendant_round_1791364592294.jpg',
+  },
+  {
+    id: 'teardrop',
+    name: '4. Teardrop Bloom Pendant',
+    description: 'Graceful pear-shaped teardrop silver casing designed for long floral stem petals.',
+    priceModifier: 25000,
+    image: '/src/assets/images/silver_pendant_teardrop_1791364603340.jpg',
+  },
+];
+
+export const SILVER_BRACELET_DESIGNS = [
+  {
+    id: 'cuff-wire',
+    name: '1. Botanical Silver Cuff Bracelet',
+    type: 'Adjustable 925 Wire Cuff',
+    description: 'Sleek adjustable sterling silver wire cuff featuring twin resin flower charms at each end.',
+    basePrice: 389000,
+    image: '/src/assets/images/silver_bracelet_cuff_1791364614195.jpg',
+  },
+  {
+    id: 'chain-link',
+    name: '2. Delicate Silver Chain Bracelet',
+    type: '925 Silver Link & Pearl Chain',
+    description: 'Refined sterling silver link chain with center resin flower locket and baroque pearl accent.',
+    basePrice: 369000,
+    image: '/src/assets/images/silver_bracelet_chain_1791364623477.jpg',
+  },
+];
+
 export const SILVER_MODELS: SilverJewelryModel[] = [
   {
     id: 'silver-bracelet',
-    name: 'The Keepsake Bangle',
-    subtitle: 'CHEMI Silver Bracelet',
+    name: 'Sakura Petal Silver Cuff Bracelet',
+    subtitle: 'CHEMI Silver Flower Bracelet',
     basePrice: 389000,
-    description: 'Handcrafted 925 Sterling Silver chain bangle with a bespoke crystalized flower capsule center.',
+    description: 'Delicate 925 Sterling Silver wire cuff bracelet featuring pink cherry blossom petals and zircon crystal center.',
     image: 'https://images.unsplash.com/photo-1611591475193-47a61d120d36?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: 'silver-necklace',
-    name: 'The Memory Pendant',
-    subtitle: 'CHEMI Silver Necklace',
+    name: 'White Flower Delicate Silver Pendant',
+    subtitle: 'CHEMI Silver Flower Necklace',
     basePrice: 429000,
-    description: 'A delicate 925 Sterling Silver chain featuring a clear resin teardrop medallion enclosing your preserved flower.',
+    description: 'Pure white lily flower pendant crafted in 925 Sterling Silver with preserved petal lens and matching silver chain.',
     image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: 'silver-brooch',
-    name: 'The Heirloom Pin',
-    subtitle: 'CHEMI Silver Brooch',
+    name: 'Forget-Me-Not Blue Flower Silver Ring & Pin',
+    subtitle: 'CHEMI Silver Ring & Brooch',
     basePrice: 349000,
-    description: 'An elegant vintage-inspired silver lapel brooch designed to display flower memories on blazers or dresses.',
-    image: 'https://images.unsplash.com/photo-1630019852942-f89202989a59?q=80&w=800&auto=format&fit=crop',
+    description: 'Delicate sterling silver band ring set with sky-blue forget-me-not flower petals and crystal resin encapsulation.',
+    image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800&auto=format&fit=crop',
   },
 ];
 

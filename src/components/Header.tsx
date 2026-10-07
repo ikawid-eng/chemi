@@ -50,6 +50,16 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Centered Spaced Nav Links */}
           <nav className="hidden md:flex items-center space-x-6 xl:space-x-10">
             <button
+              onClick={() => setActiveTab('our-story')}
+              className={`text-xs font-sans-body tracking-[0.2em] uppercase transition-colors relative py-1 ${
+                activeTab === 'our-story' ? 'text-white font-semibold' : 'text-stone-300 hover:text-white'
+              }`}
+            >
+              About
+              {activeTab === 'our-story' && <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-[#C5A059]" />}
+            </button>
+
+            <button
               onClick={() => setActiveTab('home')}
               className={`text-xs font-sans-body tracking-[0.2em] uppercase transition-colors relative py-1 ${
                 activeTab === 'home' ? 'text-white font-semibold' : 'text-stone-300 hover:text-white'
@@ -94,15 +104,6 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Workshops
-            </button>
-
-            <button
-              onClick={() => setActiveTab('our-story')}
-              className={`text-xs font-sans-body tracking-[0.2em] uppercase transition-colors relative py-1 ${
-                activeTab === 'our-story' ? 'text-white font-semibold' : 'text-stone-300 hover:text-white'
-              }`}
-            >
-              About
             </button>
           </nav>
 
@@ -159,12 +160,12 @@ export const Header: React.FC<HeaderProps> = ({
         {mobileMenuOpen && (
           <div className="md:hidden bg-[#1C070C] border-b border-white/10 px-6 py-6 space-y-3">
             <div className="flex flex-col space-y-3 text-xs tracking-[0.2em] font-sans-body uppercase">
+              <button onClick={() => { setActiveTab('our-story'); setMobileMenuOpen(false); }} className="text-left py-1 text-stone-200 hover:text-white">About</button>
               <button onClick={() => { setActiveTab('home'); setMobileMenuOpen(false); }} className="text-left py-1 text-stone-200 hover:text-white">Shop</button>
               <button onClick={() => { setActiveTab('collections'); setMobileMenuOpen(false); }} className="text-left py-1 text-stone-200 hover:text-white">Collections</button>
               <button onClick={() => { setActiveTab('beads-customizer'); setMobileMenuOpen(false); }} className="text-left py-1 text-stone-200 hover:text-white">CHEMI Beads</button>
               <button onClick={() => { setActiveTab('silver-customizer'); setMobileMenuOpen(false); }} className="text-left py-1 text-stone-200 hover:text-white">CHEMI Silver</button>
               <button onClick={() => { setActiveTab('workshops'); setMobileMenuOpen(false); }} className="text-left py-1 text-stone-200 hover:text-white">Workshops</button>
-              <button onClick={() => { setActiveTab('our-story'); setMobileMenuOpen(false); }} className="text-left py-1 text-stone-200 hover:text-white">About Us</button>
             </div>
           </div>
         )}

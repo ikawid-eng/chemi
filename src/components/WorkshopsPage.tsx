@@ -28,7 +28,7 @@ export const WorkshopsPage: React.FC<WorkshopsPageProps> = ({ setActiveTab }) =>
       location: 'CHEMI Studio, Senopati, South Jakarta',
       seatsRemaining: '4 seats remaining',
       price: 'IDR 350,000 / person',
-      image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_workshop_studio_1791363890862.jpg',
       curriculum: [
         'Color palette arrangement & flower bead weaving techniques',
         'Natural freshwater pearl grading and wire wrapping',
@@ -45,7 +45,7 @@ export const WorkshopsPage: React.FC<WorkshopsPageProps> = ({ setActiveTab }) =>
       location: 'CHEMI Studio, Senopati, South Jakarta',
       seatsRemaining: '2 seats remaining',
       price: 'IDR 550,000 / person',
-      image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_silver_keepsake_1791363874692.jpg',
       curriculum: [
         'How to press and moisture-protect bouquet petals',
         'UV crystal resin casting into solid 925 sterling silver frames',
@@ -62,7 +62,7 @@ export const WorkshopsPage: React.FC<WorkshopsPageProps> = ({ setActiveTab }) =>
       location: 'CHEMI Studio or Private Venue',
       seatsRemaining: 'Private Booking (Max 8 people)',
       price: 'IDR 2,400,000 / group (up to 6 people)',
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_gift_packaging_1791363914513.jpg',
       curriculum: [
         'Preserving wedding bouquet flowers into matching bridesmaid jewelry',
         'Custom engraved initial charms for each bridesmaid',
@@ -112,7 +112,7 @@ export const WorkshopsPage: React.FC<WorkshopsPageProps> = ({ setActiveTab }) =>
               >
                 <div>
                   <div className="relative h-48 rounded-2xl overflow-hidden bg-stone-100 mb-4">
-                    <img src={ws.image} alt={ws.title} className="w-full h-full object-cover" />
+                    <img src={ws.image} alt={ws.title} referrerPolicy="no-referrer" className="w-full h-full object-cover" />
                     <span className="absolute top-3 left-3 bg-[#581C25] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
                       {ws.category}
                     </span>

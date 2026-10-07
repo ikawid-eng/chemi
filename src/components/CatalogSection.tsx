@@ -16,7 +16,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({ setActiveTab }) 
       title: 'The Blush Pearl Bloom Bracelet',
       type: 'CHEMI Beads',
       price: 'IDR 189,000',
-      image: 'https://images.unsplash.com/photo-1611591475193-47a61d120d36?q=80&w=1000&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_beads_showcase_1791363842551.jpg',
       description: 'Handcrafted freshwater pearls with blush rose beads and custom color accents.',
       ctaTab: 'beads-customizer' as NavigationTab,
     },
@@ -26,7 +26,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({ setActiveTab }) 
       title: 'The Botanical Memory Pendant',
       type: 'CHEMI Silver Keepsake',
       price: 'IDR 429,000',
-      image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1000&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_silver_keepsake_1791363874692.jpg',
       description: '925 Sterling Silver frame holding preserved real flower petals from your bouquet.',
       ctaTab: 'silver-customizer' as NavigationTab,
     },
@@ -36,7 +36,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({ setActiveTab }) 
       title: 'Eternity Rose Petal Signet Ring',
       type: 'CHEMI Silver Keepsake',
       price: 'IDR 389,000',
-      image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=1000&auto=format&fit=crop',
+      image: '/src/assets/images/hero_chemi_jewelry_1791363797623.jpg',
       description: 'Sculptural silver ring encapsulating delicate dried rose petals in crystal resin.',
       ctaTab: 'silver-customizer' as NavigationTab,
     },
@@ -46,7 +46,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({ setActiveTab }) 
       title: 'Memory Keepsake Story Gift Box',
       type: 'CHEMI Story Box',
       price: 'IDR 529,000',
-      image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=1000&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_gift_packaging_1791363914513.jpg',
       description: 'Includes custom jewelry, personalized story card, flower mailer, and ribbon packaging.',
       ctaTab: 'gift-guide' as NavigationTab,
     },
@@ -105,6 +105,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({ setActiveTab }) 
                   <img
                     src={item.image}
                     alt={item.title}
+                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
                   />
                 </div>

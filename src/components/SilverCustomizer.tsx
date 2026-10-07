@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { SILVER_MODELS, SILVER_CHARMS, CHEMI_FLOWERS } from '../data/mockData';
-import { SilverJewelryModel, SilverCharmOption, FlowerSourceType, ChemiFlowerOption, CartItem } from '../types';
-import { Flower2, Send, CheckCircle2, ShieldCheck, Sparkles, ArrowRight, Info } from 'lucide-react';
+import { SILVER_MODELS, SILVER_CHARMS, CHEMI_FLOWERS, RESIN_PENDANT_SHAPES, SILVER_BRACELET_DESIGNS } from '../data/mockData';
+import { SilverJewelryModel, SilverPendantShape, SilverCharmOption, FlowerSourceType, ChemiFlowerOption, CartItem } from '../types';
+import { Flower2, Send, CheckCircle2, ShieldCheck, Sparkles, ArrowRight, Info, Heart, Check } from 'lucide-react';
 
 interface SilverCustomizerProps {
   onAddToCart: (item: CartItem) => void;
@@ -14,7 +14,9 @@ export const SilverCustomizer: React.FC<SilverCustomizerProps> = ({
   onOpenCart,
   onOpenFlowerGuide,
 }) => {
-  const [selectedModel, setSelectedModel] = useState<SilverJewelryModel>(SILVER_MODELS[1]); // Silver Necklace
+  const [jewelryCategory, setJewelryCategory] = useState<'necklace' | 'bracelet'>('necklace');
+  const [selectedShape, setSelectedShape] = useState<SilverPendantShape>(RESIN_PENDANT_SHAPES[0]); // Oval
+  const [selectedBracelet, setSelectedBracelet] = useState(SILVER_BRACELET_DESIGNS[0]); // Wire Cuff
   const [selectedCharm, setSelectedCharm] = useState<SilverCharmOption>(SILVER_CHARMS[0]); // Flower Charm
   const [flowerSource, setFlowerSource] = useState<FlowerSourceType>('own');
   const [selectedChemiFlower, setSelectedChemiFlower] = useState<ChemiFlowerOption>(CHEMI_FLOWERS[0]);
@@ -26,20 +28,25 @@ export const SilverCustomizer: React.FC<SilverCustomizerProps> = ({
   
   const [addedNotice, setAddedNotice] = useState(false);
 
-  const calculatedPrice = selectedModel.basePrice + selectedCharm.priceModifier;
+  const basePrice = jewelryCategory === 'necklace' ? 429000 : selectedBracelet.basePrice;
+  const calculatedPrice = basePrice + (jewelryCategory === 'necklace' ? selectedShape.priceModifier : 0) + selectedCharm.priceModifier;
 
   const handleAddToCart = () => {
     const isOwn = flowerSource === 'own';
+    const title = jewelryCategory === 'necklace' 
+      ? `CHEMI Silver Necklace — ${selectedShape.name}`
+      : `CHEMI Silver Bracelet — ${selectedBracelet.name}`;
+
     const newItem: CartItem = {
       id: 'silver-' + Date.now(),
       type: 'silver',
-      title: `${selectedModel.name}`,
+      title: title,
       subtitle: `925 Sterling Silver • ${selectedCharm.name}`,
       price: calculatedPrice,
-      image: selectedModel.image,
+      image: jewelryCategory === 'necklace' ? selectedShape.image : selectedBracelet.image,
       details: {
-        jewelryType: selectedModel.subtitle,
-        colorsOrModel: selectedModel.name,
+        jewelryType: jewelryCategory === 'necklace' ? `Necklace (${selectedShape.name})` : `Bracelet (${selectedBracelet.name})`,
+        colorsOrModel: jewelryCategory === 'necklace' ? selectedShape.name : selectedBracelet.name,
         beadsOrCharm: `${selectedCharm.name} (${selectedCharm.description})`,
         flowerSource: isOwn ? `Customer's Own Flower (${occasionName})` : `CHEMI Flower (${selectedChemiFlower.name})`,
         requiresFlowerSubmission: isOwn,
@@ -54,7 +61,7 @@ export const SilverCustomizer: React.FC<SilverCustomizerProps> = ({
   };
 
   return (
-    <div className="py-12 bg-[#0F0E0E] text-[#FAF7F2] min-h-screen">
+    <div className="py-12 bg-[#0F0E0E] text-[#FAF7F2] min-h-screen font-sans-body">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -63,10 +70,10 @@ export const SilverCustomizer: React.FC<SilverCustomizerProps> = ({
             CHEMI Silver Keepsake Studio
           </span>
           <h1 className="font-serif-editorial text-4xl sm:text-5xl font-bold text-white">
-            Some Flowers Deserve More Than a Vase.
+            4 Pendant Shapes & 2 Bracelet Designs.
           </h1>
-          <p className="text-xs sm:text-sm text-stone-300 max-w-xl mx-auto font-sans-body">
-            Abadikan kelopak bunga dari pernikahan, wisuda, atau hari berharga ke dalam liontin perak 925 Sterling Silver yang bertahan selamanya.
+          <p className="text-xs sm:text-sm text-stone-300 max-w-xl mx-auto">
+            Lihat langsung 4 contoh liontin perak murni (Oval, Heart, Round, Teardrop) dan 2 desain gelang perak untuk mengabadikan kenangan bungamu.
           </p>
         </div>
 
@@ -77,27 +84,31 @@ export const SilverCustomizer: React.FC<SilverCustomizerProps> = ({
             <div className="bg-[#161515] rounded-3xl p-8 border border-stone-800 shadow-2xl text-center space-y-6 relative overflow-hidden">
               
               <div className="flex items-center justify-between text-xs text-stone-400 font-semibold border-b border-stone-800 pb-3">
-                <span className="uppercase tracking-widest text-[#C5A059]">CHEMI Silver Keepsake</span>
+                <span className="uppercase tracking-widest text-[#C5A059]">CHEMI Silver Studio</span>
                 <span className="bg-[#3B1017] text-[#C5A059] px-2.5 py-0.5 rounded-full text-[10px] border border-stone-800">
                   925 Sterling Silver
                 </span>
               </div>
 
-              {/* Product Image Preview */}
-              <div className="relative rounded-2xl overflow-hidden border border-stone-800 shadow-lg">
+              {/* Photo Card Preview */}
+              <div className="relative rounded-2xl overflow-hidden border border-stone-800 bg-[#0A0909] h-80 shadow-inner group">
                 <img
-                  src={selectedModel.image}
-                  alt={selectedModel.name}
-                  className="w-full h-72 object-cover"
+                  src={jewelryCategory === 'necklace' ? selectedShape.image : selectedBracelet.image}
+                  alt={jewelryCategory === 'necklace' ? selectedShape.name : selectedBracelet.name}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-left space-y-1">
-                  <span className="text-[10px] uppercase font-bold text-[#C5A059] tracking-widest">
-                    {selectedCharm.name}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                <div className="absolute bottom-4 left-4 right-4 text-left space-y-1 bg-black/60 backdrop-blur-xs p-3 rounded-xl border border-white/10">
+                  <span className="text-[10px] uppercase font-bold text-[#C5A059] tracking-widest block">
+                    {jewelryCategory === 'necklace' ? 'Resin Pendant Shape' : 'Bracelet Design'}
                   </span>
-                  <h3 className="font-serif-editorial text-xl font-bold text-white">{selectedModel.name}</h3>
-                  <p className="text-xs text-stone-300">
-                    {flowerSource === 'own' ? `Custom Flower: ${occasionName}` : `Flower: ${selectedChemiFlower.name}`}
+                  <h3 className="font-serif-editorial text-lg font-bold text-white">
+                    {jewelryCategory === 'necklace' ? selectedShape.name : selectedBracelet.name}
+                  </h3>
+                  <p className="text-[11px] text-stone-300">
+                    {flowerSource === 'own' ? `Custom Flower: ${occasionName}` : `Botanical: ${selectedChemiFlower.name}`}
                   </p>
                 </div>
               </div>
@@ -105,17 +116,18 @@ export const SilverCustomizer: React.FC<SilverCustomizerProps> = ({
               {/* Summary details */}
               <div className="bg-[#0F0E0E] p-4 rounded-2xl text-left space-y-2 border border-stone-800">
                 <div className="text-xs font-bold uppercase tracking-wider text-[#C5A059] flex justify-between">
-                  <span>Selected Model</span>
+                  <span>Configuration Price</span>
                   <span>Rp {calculatedPrice.toLocaleString('id-ID')}</span>
                 </div>
                 <div className="text-xs text-stone-300 space-y-1">
-                  <p>• <strong>Model:</strong> {selectedModel.name}</p>
+                  <p>• <strong>Category:</strong> {jewelryCategory === 'necklace' ? 'CHEMI Silver Necklace' : 'CHEMI Silver Bracelet'}</p>
+                  <p>• <strong>Selected Design:</strong> {jewelryCategory === 'necklace' ? selectedShape.name : selectedBracelet.name}</p>
                   <p>• <strong>Charm Detail:</strong> {selectedCharm.name}</p>
                   <p>• <strong>Flower Origin:</strong> {flowerSource === 'own' ? 'Bring Your Own Flower' : `CHEMI Flower (${selectedChemiFlower.name})`}</p>
                   {flowerSource === 'own' && (
                     <p className="text-amber-400 text-[11px] font-semibold mt-1 flex items-center gap-1">
                       <Send className="w-3 h-3" />
-                      <span>Physical flower submission required after ordering</span>
+                      <span>Send 3–5 petals via paper envelope after ordering</span>
                     </p>
                   )}
                 </div>
@@ -143,44 +155,145 @@ export const SilverCustomizer: React.FC<SilverCustomizerProps> = ({
           {/* Right Selection Steps */}
           <div className="lg:col-span-7 space-y-8 bg-[#161515] p-8 rounded-3xl border border-stone-800 shadow-xl">
             
-            {/* Step 1: Select Silver Model */}
+            {/* Category Selector: Necklace vs Bracelet */}
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-[#3B1017] text-[#C5A059] text-xs font-bold flex items-center justify-center border border-stone-800">1</span>
-                <h3 className="font-serif-editorial text-2xl font-bold text-white">Step 1 — Choose Silver Model</h3>
+                <h3 className="font-serif-editorial text-2xl font-bold text-white">Step 1 — Choose Jewelry Category</h3>
               </div>
-              <p className="text-xs text-stone-400">Pilih dari 3 model perhiasan perak murni dasar:</p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {SILVER_MODELS.map((model) => (
-                  <div
-                    key={model.id}
-                    onClick={() => setSelectedModel(model)}
-                    className={`p-4 rounded-2xl border cursor-pointer transition-all space-y-2 ${
-                      selectedModel.id === model.id
-                        ? 'border-[#C5A059] bg-[#3B1017] text-white shadow-md'
-                        : 'border-stone-800 bg-[#0F0E0E] text-stone-300 hover:border-stone-700'
-                    }`}
-                  >
-                    <div className="h-28 rounded-xl overflow-hidden mb-2">
-                      <img src={model.image} alt={model.name} className="w-full h-full object-cover" />
-                    </div>
-                    <div className="text-xs font-bold">{model.name}</div>
-                    <div className="text-[11px] text-[#C5A059] font-serif-editorial font-semibold">
-                      Rp {model.basePrice.toLocaleString('id-ID')}
-                    </div>
-                  </div>
-                ))}
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  onClick={() => setJewelryCategory('necklace')}
+                  className={`p-4 rounded-2xl border text-center transition-all cursor-pointer ${
+                    jewelryCategory === 'necklace'
+                      ? 'border-[#C5A059] bg-[#3B1017] text-white font-bold shadow-md'
+                      : 'border-stone-800 bg-[#0F0E0E] text-stone-400'
+                  }`}
+                >
+                  <div className="text-xs uppercase tracking-wider font-bold">Necklace & Pendants</div>
+                  <div className="text-[10px] text-[#C5A059] mt-1 font-serif-editorial">4 Pendant Frame Shapes</div>
+                </button>
+
+                <button
+                  onClick={() => setJewelryCategory('bracelet')}
+                  className={`p-4 rounded-2xl border text-center transition-all cursor-pointer ${
+                    jewelryCategory === 'bracelet'
+                      ? 'border-[#C5A059] bg-[#3B1017] text-white font-bold shadow-md'
+                      : 'border-stone-800 bg-[#0F0E0E] text-stone-400'
+                  }`}
+                >
+                  <div className="text-xs uppercase tracking-wider font-bold">Silver Bracelets</div>
+                  <div className="text-[10px] text-[#C5A059] mt-1 font-serif-editorial">2 Bracelet Design Examples</div>
+                </button>
               </div>
             </div>
 
-            {/* Step 2: Choose Silver Charm */}
+            {/* IF NECKLACE: Show 4 Pendant Shape Cards */}
+            {jewelryCategory === 'necklace' ? (
+              <div className="space-y-4 pt-4 border-t border-stone-800">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-serif-editorial text-xl font-bold text-[#C5A059]">4 Examples of Pendant Shapes (4 Contoh Liontin)</h4>
+                  <span className="text-[10px] text-stone-400">Solid 925 Sterling Silver</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {RESIN_PENDANT_SHAPES.map((shape) => {
+                    const isSelected = selectedShape.id === shape.id;
+                    return (
+                      <div
+                        key={shape.id}
+                        onClick={() => setSelectedShape(shape)}
+                        className={`rounded-2xl border overflow-hidden cursor-pointer transition-all flex flex-col justify-between group ${
+                          isSelected
+                            ? 'border-[#C5A059] bg-[#3B1017] text-white ring-1 ring-[#C5A059] shadow-lg'
+                            : 'border-stone-800 bg-[#0F0E0E] text-stone-300 hover:border-stone-700'
+                        }`}
+                      >
+                        <div className="h-44 overflow-hidden relative">
+                          <img
+                            src={shape.image}
+                            alt={shape.name}
+                            referrerPolicy="no-referrer"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          {isSelected && (
+                            <span className="absolute top-2 right-2 bg-[#581C25] text-white p-1 rounded-full text-xs">
+                              <Check className="w-3.5 h-3.5" />
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="p-4 space-y-1">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs font-bold text-white">{shape.name}</span>
+                            {shape.priceModifier > 0 && (
+                              <span className="text-[10px] text-[#C5A059] font-semibold">+Rp {shape.priceModifier.toLocaleString('id-ID')}</span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-stone-400 leading-snug">{shape.description}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              /* IF BRACELET: Show 2 Bracelet Design Example Cards */
+              <div className="space-y-4 pt-4 border-t border-stone-800">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-serif-editorial text-xl font-bold text-[#C5A059]">2 Examples of Bracelet Designs (2 Contoh Design Gelang)</h4>
+                  <span className="text-[10px] text-stone-400">Solid 925 Sterling Silver</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {SILVER_BRACELET_DESIGNS.map((br) => {
+                    const isSelected = selectedBracelet.id === br.id;
+                    return (
+                      <div
+                        key={br.id}
+                        onClick={() => setSelectedBracelet(br)}
+                        className={`rounded-2xl border overflow-hidden cursor-pointer transition-all flex flex-col justify-between group ${
+                          isSelected
+                            ? 'border-[#C5A059] bg-[#3B1017] text-white ring-1 ring-[#C5A059] shadow-lg'
+                            : 'border-stone-800 bg-[#0F0E0E] text-stone-300 hover:border-stone-700'
+                        }`}
+                      >
+                        <div className="h-44 overflow-hidden relative">
+                          <img
+                            src={br.image}
+                            alt={br.name}
+                            referrerPolicy="no-referrer"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          {isSelected && (
+                            <span className="absolute top-2 right-2 bg-[#581C25] text-white p-1 rounded-full text-xs">
+                              <Check className="w-3.5 h-3.5" />
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="p-4 space-y-1">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs font-bold text-white">{br.name}</span>
+                            <span className="text-[10px] text-[#C5A059] font-semibold">Rp {br.basePrice.toLocaleString('id-ID')}</span>
+                          </div>
+                          <p className="text-[10px] text-[#C5A059] font-medium">{br.type}</p>
+                          <p className="text-[11px] text-stone-400 leading-snug">{br.description}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Step 3: Choose Silver Charm Accent */}
             <div className="space-y-4 pt-4 border-t border-stone-800">
               <div className="flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-[#3B1017] text-[#C5A059] text-xs font-bold flex items-center justify-center border border-stone-800">2</span>
                 <h3 className="font-serif-editorial text-2xl font-bold text-white">Step 2 — Custom Charm Accent</h3>
               </div>
-              <p className="text-xs text-stone-400">The flower is the memory. The charm is the personal detail.</p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {SILVER_CHARMS.map((charm) => (
@@ -205,7 +318,7 @@ export const SilverCustomizer: React.FC<SilverCustomizerProps> = ({
               </div>
             </div>
 
-            {/* Step 3: Your Flower or CHEMI Flower */}
+            {/* Step 4: Your Flower or CHEMI Flower */}
             <div className="space-y-4 pt-4 border-t border-stone-800">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -294,13 +407,6 @@ export const SilverCustomizer: React.FC<SilverCustomizerProps> = ({
                       placeholder="E.g., Red bouquet rose petals from graduation..."
                       className="w-full text-xs p-2.5 bg-stone-900 rounded-xl border border-stone-800 text-white outline-none focus:border-[#C5A059] resize-none"
                     />
-                  </div>
-
-                  <div className="p-3 bg-stone-900 rounded-xl border border-stone-800 text-[11px] text-stone-300 space-y-1">
-                    <p className="font-semibold text-[#C5A059]">Flower Intake Process Overview:</p>
-                    <p className="text-stone-400">
-                      1. Place order → 2. Receive dispatch label → 3. Send 3–5 petals in paper envelope → 4. Studio preserves and mounts into silver.
-                    </p>
                   </div>
                 </div>
               ) : (

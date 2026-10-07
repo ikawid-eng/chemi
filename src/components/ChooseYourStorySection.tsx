@@ -15,7 +15,7 @@ export const ChooseYourStorySection: React.FC<ChooseYourStorySectionProps> = ({ 
       name: 'THE BLUSH PEARL BRACELET',
       price: 'IDR 189,000',
       category: 'CHEMI BEADS',
-      image: 'https://images.unsplash.com/photo-1611591475193-47a61d120d36?q=80&w=600&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_beads_showcase_1791363842551.jpg',
       tab: 'beads-customizer' as NavigationTab,
     },
     {
@@ -23,7 +23,7 @@ export const ChooseYourStorySection: React.FC<ChooseYourStorySectionProps> = ({ 
       name: 'THE BOTANICAL MEMORY PENDANT',
       price: 'IDR 429,000',
       category: 'CHEMI SILVER',
-      image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=600&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_silver_keepsake_1791363874692.jpg',
       tab: 'silver-customizer' as NavigationTab,
     },
     {
@@ -31,7 +31,7 @@ export const ChooseYourStorySection: React.FC<ChooseYourStorySectionProps> = ({ 
       name: 'THE ETERNITY ROSE RING',
       price: 'IDR 389,000',
       category: 'CHEMI SILVER',
-      image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=600&auto=format&fit=crop',
+      image: '/src/assets/images/hero_chemi_jewelry_1791363797623.jpg',
       tab: 'silver-customizer' as NavigationTab,
     },
     {
@@ -39,7 +39,7 @@ export const ChooseYourStorySection: React.FC<ChooseYourStorySectionProps> = ({ 
       name: 'THE SIGNATURE STORY BOX',
       price: 'IDR 529,000',
       category: 'GIFT EXPERIENCE',
-      image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=600&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_gift_packaging_1791363914513.jpg',
       tab: 'gift-guide' as NavigationTab,
     },
   ];
@@ -100,6 +100,7 @@ export const ChooseYourStorySection: React.FC<ChooseYourStorySectionProps> = ({ 
                   <img
                     src={item.image}
                     alt={item.name}
+                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>

@@ -14,8 +14,9 @@ export const WhatIsChemiSection: React.FC<WhatIsChemiSectionProps> = ({ setActiv
         {/* Left Column: High Fashion Packaging Photography (Exact as image.png) */}
         <div className="lg:col-span-6 relative min-h-[380px] lg:min-h-[520px]">
           <img
-            src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=1200&auto=format&fit=crop"
+            src="/src/assets/images/chemi_gift_packaging_1791363914513.jpg"
             alt="CHEMI Story Packaging Box"
+            referrerPolicy="no-referrer"
             className="w-full h-full object-cover"
           />
         </div>

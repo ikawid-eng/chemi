@@ -13,21 +13,21 @@ export const GiftSection: React.FC = () => {
       name: 'Standard CHEMI Pouch',
       price: 'Included Complimentary',
       desc: 'Minimalist linen pouch with gold foil CHEMI logo stamp.',
-      image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=400&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_beads_showcase_1791363842551.jpg',
     },
     {
       id: 'signature',
       name: 'Signature Story Gift Box',
       price: 'Free on Orders > 350k',
       desc: 'Rigid maroon box, cream ribbon, dried floral sprig, and story card.',
-      image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=400&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_gift_packaging_1791363914513.jpg',
     },
     {
       id: 'special',
       name: 'Special Occasion Box',
       price: 'IDR 50,000',
       desc: 'Custom ribbon color, wax seal, keepsake flower mailer, and wax envelope.',
-      image: 'https://images.unsplash.com/photo-1512909006721-3d6018887383?q=80&w=400&auto=format&fit=crop',
+      image: '/src/assets/images/chemi_silver_keepsake_1791363874692.jpg',
     },
   ];
 
@@ -78,7 +78,7 @@ export const GiftSection: React.FC = () => {
                       </span>
                     )}
                     <div className="h-28 rounded-xl overflow-hidden bg-stone-100">
-                      <img src={pkg.image} alt={pkg.name} className="w-full h-full object-cover" />
+                      <img src={pkg.image} alt={pkg.name} referrerPolicy="no-referrer" className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h4 className="font-serif-editorial text-lg font-bold text-stone-900 leading-tight">
